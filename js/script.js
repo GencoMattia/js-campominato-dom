@@ -56,3 +56,5 @@ function getBlacklistedNumbers(maxNumbers) {
     }
     return blacklistedNumbers
 };
+
+console.log(getBlacklistedNumbers(100))
