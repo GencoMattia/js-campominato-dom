@@ -9,11 +9,13 @@ document.querySelector("#play-button").addEventListener("click", function(){
 // -------------------FUNZIONI----------------------
 
 function getNewGame(container, difficulty) {
-    container.innerHTML = ""
+    container.innerHTML = "";
 
     let bombsList = [];
-    bombsList = getBlacklistedNumbers(difficulty)
+    bombsList = getBlacklistedNumbers(difficulty);
     console.log(bombsList);
+
+    let gamePoints = 0;
 
     for(i = 0; i < difficulty; i++) {
         // Elements
@@ -25,6 +27,7 @@ function getNewGame(container, difficulty) {
         cellEl.appendChild(cellNumberEl);
         cellNumberEl.append(i + 1);
 
+        // Adding Bombs
         if (bombsList.includes(i + 1)) {
             cellEl.classList.add("bomb");
         }
@@ -33,14 +36,35 @@ function getNewGame(container, difficulty) {
         cellEl.addEventListener("click", function() {
             cellEl.classList.add("active");
             console.log(cellNumberEl.outerText);
+
+            // Game Over conditions
+            if(cellEl.classList.contains("bomb")){
+                console.log("Bomba! Game Over")
+            } else {
+                gamePoints = gamePoints + 1
+                console.log(gamePoints)
+            }
         });
     };
 };
 
+/**
+ * 
+ * @param {*} min 
+ * @param {*} max 
+ * @returns a random number
+ */
 function getRandomNumber(min, max) {
     return Math.floor( Math.random() * (max - min + 1)) + min;
 };
 
+/**
+ * 
+ * @param {*} blacklist 
+ * @param {*} min 
+ * @param {*} max 
+ * @returns a random unique number
+ */
 function getUniqueRandomNumber(blacklist, min, max) {
     let randomNumber;
     let isFound = false;
@@ -53,6 +77,11 @@ function getUniqueRandomNumber(blacklist, min, max) {
     return randomNumber;
 };
 
+/**
+ * 
+ * @param {*} maxNumbers 
+ * @returns a list of 16 blacklisted unique random nubers that range from 1 to a set max number
+ */
 function getBlacklistedNumbers(maxNumbers) {
     const blacklistedNumbers = [];
     while(blacklistedNumbers.length < 16){
