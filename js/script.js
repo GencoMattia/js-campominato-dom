@@ -16,6 +16,7 @@ function getNewGame(container, difficulty) {
     console.log(bombsList);
     
     let gamePoints = 0;
+    let gameOver = false
     
     for(i = 0; i < difficulty; i++) {
         // Elements
@@ -33,8 +34,12 @@ function getNewGame(container, difficulty) {
         }
         
         // Event Click
-        cellEl.addEventListener("click", function() {
+        cellEl.addEventListener("click", function onClick() {
+            if(gameOver === true){
+                return
+            }
             cellEl.classList.add("active");
+            cellEl.removeEventListener("click", onClick);
             console.log(cellNumberEl.outerText);
             
             // Game Over conditions
@@ -43,6 +48,7 @@ function getNewGame(container, difficulty) {
                 bombEl.forEach(function(cellEl) {
                     cellEl.classList.add("active");
                 });
+                gameOver = true
                 console.log("Bomba! Game Over");
             } else {
                 gamePoints = gamePoints + 1;
