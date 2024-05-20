@@ -1,9 +1,6 @@
 const gridEl = document.querySelector("#grid");
 const getDifficulty = 100;
 
-
-
-
 document.querySelector("#play-button").addEventListener("click", function(){
     getNewGame(gridEl, getDifficulty);
 });
@@ -13,7 +10,11 @@ document.querySelector("#play-button").addEventListener("click", function(){
 
 function getNewGame(container, difficulty) {
     document.querySelector("#play-button").addEventListener("click", function(){
-        gridEl.innerHTML = ""
+        container.innerHTML = ""
+
+        const bombsList = getBlacklistedNumbers(difficulty)
+        console.log(bombsList)
+
         for(i = 0; i < difficulty; i++) {
             // Elements
             const cellEl = document.createElement("article");
@@ -57,4 +58,4 @@ function getBlacklistedNumbers(maxNumbers) {
     return blacklistedNumbers
 };
 
-console.log(getBlacklistedNumbers(100))
+// console.log(getBlacklistedNumbers(100))
