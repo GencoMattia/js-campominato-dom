@@ -16,7 +16,10 @@ function getNewGame(container, difficulty) {
     console.log(bombsList);
     
     let gamePoints = 0;
-    let gameOver = false
+    let gameOver = false;
+
+    const pointCalculatorEl = document.querySelector("#points-number");
+    pointCalculatorEl.textContent = gamePoints;
     
     for(i = 0; i < difficulty; i++) {
         // Elements
@@ -53,9 +56,10 @@ function getNewGame(container, difficulty) {
             } else {
                 gamePoints = gamePoints + 1;
                 console.log(gamePoints);
+                pointCalculatorEl.textContent = gamePoints
             };
         });
-    };
+    };    
 };
 
 /**
