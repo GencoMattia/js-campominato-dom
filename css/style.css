@@ -61,7 +61,7 @@ body{
 }
 
 #grid{
-    margin: 0 auto;
+    margin: 0 auto 3rem;
     width: 800px;
     height: 800px;
     flex-wrap: wrap;
