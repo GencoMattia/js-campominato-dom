@@ -9,29 +9,28 @@ document.querySelector("#play-button").addEventListener("click", function(){
 // -------------------FUNZIONI----------------------
 
 function getNewGame(container, difficulty) {
-    document.querySelector("#play-button").addEventListener("click", function(){
-        container.innerHTML = ""
+    container.innerHTML = ""
 
-        const bombsList = getBlacklistedNumbers(difficulty)
-        console.log(bombsList)
+    let bombsList = [];
+    bombsList = getBlacklistedNumbers(difficulty)
+    console.log(bombsList);
 
-        for(i = 0; i < difficulty; i++) {
-            // Elements
-            const cellEl = document.createElement("article");
-            const cellNumberEl = document.createElement("span");
+    for(i = 0; i < difficulty; i++) {
+        // Elements
+        const cellEl = document.createElement("article");
+        const cellNumberEl = document.createElement("span");
+    
+        // Adding Elements
+        gridEl.appendChild(cellEl);
+        cellEl.appendChild(cellNumberEl);
+        cellNumberEl.append(i + 1);
         
-            // Adding Elements
-            gridEl.appendChild(cellEl);
-            cellEl.appendChild(cellNumberEl);
-            cellNumberEl.append(i + 1);
-            
-            // Event Click
-            cellEl.addEventListener("click", function() {
-                cellEl.classList.add("active");
-                console.log(cellNumberEl.outerText);
-            });
-        };
-    });
+        // Event Click
+        cellEl.addEventListener("click", function() {
+            cellEl.classList.add("active");
+            console.log(cellNumberEl.outerText);
+        });
+    };
 };
 
 function getRandomNumber(min, max) {
