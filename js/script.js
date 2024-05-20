@@ -1,5 +1,5 @@
 const gridEl = document.querySelector("#grid");
-const getDifficulty = 100;
+let getDifficulty = 100;
 
 document.querySelector("#play-button").addEventListener("click", function(){
     getNewGame(gridEl, getDifficulty);

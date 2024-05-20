@@ -54,6 +54,14 @@ body{
     font-family: "Poetsen One", sans-serif;
 }
 
+#difficulty-selector{
+    padding: 5px 25px;
+    border-radius: 2rem;
+    border: 1px solid black;
+    font-family: "Poetsen One", sans-serif;
+    margin-right: 1rem;
+}
+
 /* ---------------------------------main------------------------------------- */
 .main-container{
     background-color: #7fffd4;
