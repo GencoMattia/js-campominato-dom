@@ -22,7 +22,6 @@ document.querySelector("#play-button").addEventListener("click", function(){
             articlesNumber = 100; 
     }
 
-
     getNewGame(gridEl, articlesNumber, difficultyClass);
 });
 
@@ -63,7 +62,7 @@ function getNewGame(container, cells, difficulty) {
         cellEl.addEventListener("click", function onClick() {
             if(gameOver === true){
                 return
-            }
+            };
             cellEl.classList.add("active");
             cellEl.removeEventListener("click", onClick);
             console.log(cellNumberEl.outerText);
