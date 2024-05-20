@@ -30,7 +30,7 @@ Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro 
 Ad esempio: Di cosa ho bisogno per generare i numeri? Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
 Le validazioni e i controlli possiamo farli anche in un secondo momento.
 
-
+-------------------PARTE 1---------------------
 - creare struttura container in file html
 - aggiungere classi generiche in css per stilizzare container e tabella futura
 - js: creare un ciclo for reiterativo un numero di volte pari al numero di celle all'interno della griglia
@@ -43,3 +43,17 @@ Le validazioni e i controlli possiamo farli anche in un secondo momento.
 - aggiungere tasto "play" 
 - JS: connettere il tasto play con un event-listener in modo che resetti lo stato delle celle.
     - possibilmente rimuovendo le classi aggiunte al click
+
+-------------------PARTE 2---------------------
+- cambiare il metodo di aggiornamento in modo che il tasto "play" generi una nuova griglia. (Per prevenire futuri conflitti)
+    - racchiudere la creazione della grigli in una funzione
+    - are in modo con innerHtml che il contenitore della griglia si svuoti prima di creare la griglia.
+- creo una funzione che rimandi 16 numeri casuali dato un determinato range di numero min-max senza ripetizioni
+    - utilizzo un ciclo while durante la creazione dei numeri per implementare i parametri di controllo di controllo
+    - all'interno della funzione fare in modo che per ogni numero associato, venga aggiunta una classe "bomba" alle celle in questione
+- Creo una condizione di partita in cui preparo le condizioni di "game over"
+    - prima condizione: se il giocatore clicca su una cella "bomba" il gioco finisce e disattiva la possibilità di cliccare
+    - seconda condizione: se il giocatore clicca su tutte le celle buone e rimangono solo "bombe" il gioco finisce e disattiva la possibilità di cliccare
+
+-----------------BONUS--------------------------
+- implementazione bonus a seguire una volta che la struttura base è completata e funzionante
