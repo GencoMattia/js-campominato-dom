@@ -19,10 +19,14 @@ function getNewGame(difficulty) {
                 cellEl.classList.add("active");
                 console.log(cellNumberEl.outerText);
             });
-        }
+        };
     });
-}
+};
+
+function getRandomNumber(min, max) {
+return Math.floor( Math.random() * (max - min + 1)) + min;
+};
 
 document.querySelector("#play-button").addEventListener("click", function(){
-    getNewGame(getDifficulty)
-})
+    getNewGame(getDifficulty);
+});
