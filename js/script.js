@@ -1,32 +1,39 @@
 const gridEl = document.querySelector("#grid");
-let getDifficulty;
 const difficultySelector = document.querySelector("#difficulty-selector");
 
-switch(difficultySelector.value) {
-    case "easy":
-        getDifficulty = 100;
-        break;
-    case "medium":
-        getDifficulty = 81;
-        break
-    case "hard":
-        getDifficulty = 49;
-        break
-}
-console.log(getDifficulty)
-
 document.querySelector("#play-button").addEventListener("click", function(){
-    getNewGame(gridEl, getDifficulty);
+    let articlesNumber;
+    let difficultyClass;
+
+    switch(difficultySelector.value) {
+        case "easy":
+            articlesNumber = 100;
+            difficultyClass = "easy";
+            break;
+        case "medium":
+            articlesNumber = 81;
+            difficultyClass = "medium";
+            break
+        case "hard":
+            articlesNumber = 49;
+            difficultyClass = "hard";
+            break
+        default:
+            articlesNumber = 100; 
+    }
+
+
+    getNewGame(gridEl, articlesNumber, difficultyClass);
 });
 
 
 // -------------------FUNZIONI----------------------
 
-function getNewGame(container, difficulty) {
+function getNewGame(container, cells, difficulty) {
     container.innerHTML = "";
 
     let bombsList = [];
-    bombsList = getBlacklistedNumbers(difficulty);
+    bombsList = getBlacklistedNumbers(cells);
     console.log(bombsList);
     
     let gamePoints = 0;
@@ -35,7 +42,7 @@ function getNewGame(container, difficulty) {
     const pointCalculatorEl = document.querySelector("#points-number");
     pointCalculatorEl.textContent = gamePoints;
     
-    for(i = 0; i < difficulty; i++) {
+    for(i = 0; i < cells; i++) {
         // Elements
         const cellEl = document.createElement("article");
         const cellNumberEl = document.createElement("span");
@@ -44,6 +51,8 @@ function getNewGame(container, difficulty) {
         gridEl.appendChild(cellEl);
         cellEl.appendChild(cellNumberEl);
         cellNumberEl.append(i + 1);
+
+        cellEl.classList.add(difficulty);
         
         // Adding Bombs
         if (bombsList.includes(i + 1)) {
