@@ -24,6 +24,10 @@ function getNewGame(container, difficulty) {
         gridEl.appendChild(cellEl);
         cellEl.appendChild(cellNumberEl);
         cellNumberEl.append(i + 1);
+
+        if (bombsList.includes(i + 1)) {
+            cellEl.classList.add("bomb");
+        }
         
         // Event Click
         cellEl.addEventListener("click", function() {
