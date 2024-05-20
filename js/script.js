@@ -14,19 +14,19 @@ function getNewGame(container, difficulty) {
     let bombsList = [];
     bombsList = getBlacklistedNumbers(difficulty);
     console.log(bombsList);
-
+    
     let gamePoints = 0;
-
+    
     for(i = 0; i < difficulty; i++) {
         // Elements
         const cellEl = document.createElement("article");
         const cellNumberEl = document.createElement("span");
-    
+        
         // Adding Elements
         gridEl.appendChild(cellEl);
         cellEl.appendChild(cellNumberEl);
         cellNumberEl.append(i + 1);
-
+        
         // Adding Bombs
         if (bombsList.includes(i + 1)) {
             cellEl.classList.add("bomb");
@@ -36,14 +36,18 @@ function getNewGame(container, difficulty) {
         cellEl.addEventListener("click", function() {
             cellEl.classList.add("active");
             console.log(cellNumberEl.outerText);
-
+            
             // Game Over conditions
             if(cellEl.classList.contains("bomb")){
-                console.log("Bomba! Game Over")
+                const bombEl = container.querySelectorAll(".bomb");
+                bombEl.forEach(function(cellEl) {
+                    cellEl.classList.add("active");
+                });
+                console.log("Bomba! Game Over");
             } else {
-                gamePoints = gamePoints + 1
-                console.log(gamePoints)
-            }
+                gamePoints = gamePoints + 1;
+                console.log(gamePoints);
+            };
         });
     };
 };
