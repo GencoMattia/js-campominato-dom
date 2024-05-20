@@ -1,5 +1,19 @@
 const gridEl = document.querySelector("#grid");
-let getDifficulty = 100;
+let getDifficulty;
+const difficultySelector = document.querySelector("#difficulty-selector");
+
+switch(difficultySelector.value) {
+    case "easy":
+        getDifficulty = 100;
+        break;
+    case "medium":
+        getDifficulty = 81;
+        break
+    case "hard":
+        getDifficulty = 49;
+        break
+}
+console.log(getDifficulty)
 
 document.querySelector("#play-button").addEventListener("click", function(){
     getNewGame(gridEl, getDifficulty);
