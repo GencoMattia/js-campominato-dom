@@ -1,6 +1,16 @@
 const gridEl = document.querySelector("#grid");
 const getDifficulty = 100;
 
+
+
+
+document.querySelector("#play-button").addEventListener("click", function(){
+    getNewGame(gridEl, getDifficulty);
+});
+
+
+// -------------------FUNZIONI----------------------
+
 function getNewGame(container, difficulty) {
     document.querySelector("#play-button").addEventListener("click", function(){
         gridEl.innerHTML = ""
@@ -32,13 +42,17 @@ function getUniqueRandomNumber(blacklist, min, max) {
     let isFound = false;
     while(!isFound) {
         randomNumber = getRandomNumber(min, max);
-        if(blacklist.includes(randomNumber) !== false){
+        if(!blacklist.includes(randomNumber)){
             isFound = true; 
         };
     };
     return randomNumber;
 };
 
-document.querySelector("#play-button").addEventListener("click", function(){
-    getNewGame(gridEl, getDifficulty);
-});
+function getBlacklistedNumbers(maxNumbers) {
+    const blacklistedNumbers = [];
+    while(blacklistedNumbers.length < 16){
+        blacklistedNumbers.push (getUniqueRandomNumber(blacklistedNumbers, 1, maxNumbers))
+    }
+    return blacklistedNumbers
+};
